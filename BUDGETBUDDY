@@ -1,10 +1,37 @@
+//INCOMPLETE PA ITO
+
+
 #include "BudgetBuddy.h"
 #include <iostream>
 #include <string>
 
-using namespace std;
+using namespace std;  // Add this line to use the std namespace explicitly
 
-int main () {
+int main() {
+    BudgetBuddy budgetBuddy;
 
+    // Accept user inputs
+    double amount;
+    string category, date;
 
+    cout << "Enter expense amount: ";
+    cin >> amount;
+
+    cout << "Enter expense category: ";
+    cin.ignore();  // Ignore any previous newline character
+    getline(cin, category);
+
+    cout << "Enter expense date (YYYY-MM-DD): ";
+    getline(cin, date);
+
+    // Add expense to BudgetBuddy
+    budgetBuddy.addExpense(amount, category, date);
+
+    // Perform budget management
+    budgetBuddy.manageBudget();
+
+    // Generate and display reports
+    budgetBuddy.generateReports();
+
+    return 0;
 }

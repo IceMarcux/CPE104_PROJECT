@@ -1,31 +1,88 @@
-//INCOMPLETE PA ITO
-
-
-#include "BudgetBuddy.h"
 #include <iostream>
-#include <string>
+#include <vector>
+#include <unordered_map>
 
-using namespace std;  // Add this line to use the std namespace explicitly
+using namespace std;
+
+// Data structures for expense records
+struct Expense {
+    double amount;
+    string category;
+    string date;
+    // Add more fields as needed
+};
+
+// Linked list node for efficient storage of expense records
+struct Node {
+    Expense data;
+    Node* next;
+};
+
+class BudgetBuddy {
+private:
+    // Linked list for storing expense records
+    Node* expenseListHead = nullptr;
+
+    // Hash table for categorizing expenses
+    unordered_map<string, vector<Expense>> expenseCategories;
+
+    // Other variables as needed
+
+public:
+    // Function to validate and store expense input
+    void addExpense(double amount, const string& category, const string& date) {
+        // Input validation (add your validation logic here)
+
+        // Create a new expense record
+        Expense newExpense = {amount, category, date};
+
+        // Store in linked list
+        addToExpenseList(newExpense);
+
+        // Categorize expense using hash table
+        addToExpenseCategories(newExpense);
+    }
+
+    // Function to add expense record to linked list
+    void addToExpenseList(const Expense& expense) {
+        Node* newNode = new Node{expense, nullptr};
+
+        // Add to the beginning of the linked list
+        newNode->next = expenseListHead;
+        expenseListHead = newNode;
+    }
+
+    // Function to categorize expense using hash table
+    void addToExpenseCategories(const Expense& expense) {
+        expenseCategories[expense.category].push_back(expense);
+    }
+
+    // Function to perform budget management and analytics
+    void manageBudget() {
+        // Add your budget management and analytics logic here
+        // This can include real-time analytics, goal monitoring, and optimization algorithms
+    }
+
+    // Function to generate and display reports
+    void generateReports() {
+        // Add your report generation logic here
+        // This can include displaying expense reports, budget overviews, and recommendations
+    }
+
+    // Other functions as needed for user interaction, feedback, and more
+
+    // Destructor to free memory
+    ~BudgetBuddy() {
+        // Add code to deallocate linked list nodes
+    }
+};
 
 int main() {
     BudgetBuddy budgetBuddy;
 
-    // Accept user inputs
-    double amount;
-    string category, date;
-
-    cout << "Enter expense amount: ";
-    cin >> amount;
-
-    cout << "Enter expense category: ";
-    cin.ignore();  // Ignore any previous newline character
-    getline(cin, category);
-
-    cout << "Enter expense date (YYYY-MM-DD): ";
-    getline(cin, date);
-
-    // Add expense to BudgetBuddy
-    budgetBuddy.addExpense(amount, category, date);
+    // Sample usage
+    budgetBuddy.addExpense(50.0, "Groceries", "2024-01-23");
+    budgetBuddy.addExpense(30.0, "Dining", "2024-01-24");
 
     // Perform budget management
     budgetBuddy.manageBudget();

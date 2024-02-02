@@ -6,40 +6,22 @@
 int main() {
     BudgetBuddy budgetBuddy;
 
-    // Accept expense input
-    double expenseAmount;
-    std::string expenseCategory, expenseDate;
+    // Accept user inputs
+    double amount;
+    std::string category, date;
 
     std::cout << "Enter expense amount: ";
-    std::cin >> expenseAmount;
+    std::cin >> amount;
 
     std::cout << "Enter expense category: ";
     std::cin.ignore();  // Ignore any previous newline character
-    std::getline(std::cin, expenseCategory);
+    std::getline(std::cin, category);
 
     std::cout << "Enter expense date (YYYY-MM-DD): ";
-    std::getline(std::cin, expenseDate);
+    std::getline(std::cin, date);
 
     // Add expense to BudgetBuddy
-    budgetBuddy.addExpense(expenseAmount, expenseCategory, expenseDate);
-
-    // Accept income input
-    double incomeAmount;
-
-    std::cout << "Enter income amount: ";
-    std::cin >> incomeAmount;
-
-    // Add income to BudgetBuddy
-    budgetBuddy.addIncome(incomeAmount);
-
-    // Accept monthly budget goals
-    double monthlyBudgetGoal;
-
-    std::cout << "Enter monthly budget goal: ";
-    std::cin >> monthlyBudgetGoal;
-
-    // Set monthly budget goal in BudgetBuddy
-    budgetBuddy.setMonthlyBudgetGoal(monthlyBudgetGoal);
+    budgetBuddy.addExpense(amount, category, date);
 
     // Perform budget management
     budgetBuddy.manageBudget();
@@ -49,4 +31,3 @@ int main() {
 
     return 0;
 }
-

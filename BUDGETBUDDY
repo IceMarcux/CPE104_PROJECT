@@ -1,3 +1,4 @@
+// main.cpp
 #include "BudgetBuddy.h"
 #include <iostream>
 #include <string>
@@ -28,7 +29,7 @@ int main() {
     std::cout << "Enter income amount: ";
     std::cin >> incomeAmount;
 
-    // Add income to BudgetBuddy (you need to implement this function in BudgetBuddy)
+    // Add income to BudgetBuddy
     budgetBuddy.addIncome(incomeAmount);
 
     // Accept monthly budget goals
@@ -37,7 +38,7 @@ int main() {
     std::cout << "Enter monthly budget goal: ";
     std::cin >> monthlyBudgetGoal;
 
-    // Set monthly budget goal in BudgetBuddy (you need to implement this function in BudgetBuddy)
+    // Set monthly budget goal in BudgetBuddy
     budgetBuddy.setMonthlyBudgetGoal(monthlyBudgetGoal);
 
     // Perform budget management

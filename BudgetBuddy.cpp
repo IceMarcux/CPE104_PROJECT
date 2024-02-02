@@ -1,5 +1,5 @@
-// BudgetBuddy.cpp
 #include "BudgetBuddy.h"
+#include <iostream>
 
 void BudgetBuddy::addExpense(double amount, const std::string& category, const std::string& date) {
     Expense newExpense = {amount, category, date};
@@ -7,13 +7,27 @@ void BudgetBuddy::addExpense(double amount, const std::string& category, const s
 }
 
 void BudgetBuddy::manageBudget() {
-    // Implement budget management and analytics logic here
-    // You can access the expenseList and perform operations on it
+    // Assume a predefined budget goal
+    const double budgetGoal = 100.0;
+
+    // Calculate total expenses
+    double totalExpenses = 0.0;
+    Node<Expense>* current = expenseList.getHead();
+    while (current != nullptr) {
+        totalExpenses += current->data.amount;
+        current = current->next;
+    }
+
+    // Check if expenses exceed the budget goal
+    if (totalExpenses > budgetGoal) {
+        std::cout << "Warning: Expenses exceed the budget goal!" << std::endl;
+    }
 }
 
 void BudgetBuddy::generateReports() {
-    // Implement report generation logic here
-    // You can access the expenseList and generate reports based on it
+    // Print the list of expenses
+    std::cout << "Expense Report:" << std::endl;
+    expenseList.print();
 }
 
 // Destructor (if needed)

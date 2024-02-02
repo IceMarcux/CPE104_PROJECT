@@ -1,43 +1,30 @@
-// BudgetBuddy.h
+//BudgetBuddy.h
 #pragma once
 
 #include <iostream>
-#include <unordered_map>
-#include "LinkedList.h"
+#include <string>
+#include "LinkedList.h" // Include the LinkedList header
 
-// Data structures for expense records
 struct Expense {
     double amount;
     std::string category;
     std::string date;
-    // Add more fields as needed
 };
 
 class BudgetBuddy {
 private:
-    // Linked list for storing expense records
-    LinkedList<Expense> expenseList;
-
-    // Hash table for categorizing expenses
-    std::unordered_map<std::string, std::vector<Expense>> expenseCategories;
-
-    // Other variables as needed
-    double totalIncome;
-    double monthlyBudgetGoal;
+    LinkedList<Expense> expenseList; // Linked list of expenses
 
 public:
-    // Function to validate and store expense input
+    // Function to add an expense
     void addExpense(double amount, const std::string& category, const std::string& date);
 
-    // Function to validate and store income input
-    void addIncome(double amount);
-
-    // Function to set monthly budget goal
-    void setMonthlyBudgetGoal(double goal);
-
-    // Function to perform budget management and analytics
+    // Function to manage the budget and perform analytics
     void manageBudget();
 
     // Function to generate and display reports
     void generateReports();
+
+    // Destructor (if needed)
+    ~BudgetBuddy();
 };
